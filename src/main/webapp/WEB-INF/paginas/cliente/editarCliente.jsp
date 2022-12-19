@@ -22,7 +22,7 @@
 	<jsp:include page="../comunes/cabecero.jsp" />
 
 	<form
-		action="${pageContext.request.contextPath}/ServletControlador?accion=modificar&idEquipo=${equipo.idequipo}"
+		action="${pageContext.request.contextPath}/ServletControlador?accion=modificar&cod_jugador=${jugador.cod_jugador}"
 		method="POST" class="was-validated">
 		<jsp:include page="../comunes/botonesNavegacionEdicion.jsp" />
 		<section id="details">
@@ -31,45 +31,47 @@
 					<div class="col">
 						<div class="card">
 							<div class="card-header">
-								<h4>Editar Equipos</h4>
+								<h4>Editar Jugador</h4>
 							</div>
 							<div class="card-body">
+					<div class="form-group">
+						<label for="Pais">Club</label> 
+						<select class="form-select"
+							name="cod_club" aria-label="Default select example">
+							<c:forEach var="clubs" items="${club}" varStatus="status">
+>								<option value="${clubs.cod_club}">${clubs.nombre_club}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="Pais">Posicion</label>
+						<select class="form-select"
+							name="cod_posicion" aria-label="Default select example">
+							<c:forEach var="posicions" items="${posicion}" varStatus="status">
+>								<option value="${posicions.cod_posicion}">${posicions.nom_posicion}</option>
+							</c:forEach>
+						</select>
+					</div>
 								<div class="form-group">
-									<label for="Pais">Pais</label> <select class="form-select"
-										name="idpais" aria-label="Default select example">
-										<c:forEach var="paiss" items="${pais}" varStatus="status">
->								<option value="${paiss.idpais}">${paiss.nombre}</option>
-										</c:forEach>
-									</select>
+									<label for="nombre_jugador">Nombre Jugador</label> <input type="text"
+										class="form-control" name="nombre_jugador" required
+										value="${jugador.nombre_jugador}">
 								</div>
 								<div class="form-group">
-									<label for="Pais">Marca</label> <select class="form-select"
-										name="idmarca" aria-label="Default select example">
-										<c:forEach var="marcas" items="${marca}" varStatus="status">
->								<option value="${marcas.idmarca}">${marcas.descripcion}</option>
-										</c:forEach>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="nombre">Nombre</label> <input type="text"
-										class="form-control" name="nombre" required
-										value="${equipo.nombre}">
-								</div>
-								<div class="form-group">
-									<label for="descripcion">Descripcion</label> <input type="text"
-										class="form-control" name="descripcion" required
-										value="${equipo.descripcion}">
+									<label for="ape_jugador">Apellido Jugador</label> <input type="text"
+										class="form-control" name="ape_jugador" required
+										value="${jugador.ape_juegador}">
 								</div>
 								<!-- comment -->
 								<div class="form-group">
-									<label for="estado">Estado</label> <input type="text"
-										class="form-control" name="estado" required
-										value="${equipo.estado}">
+									<label for="dni_jugador">N° de Documento de Identidad</label> <input type="text"
+										class="form-control" name="dni_jugador" required
+										value="${jugador.dni_jugador}">
 								</div>
 								<div class="form-group">
-									<label for="precio">Precio</label> <input type="text"
-										class="form-control" name="precio" required
-										value="${equipo.precio}">
+									<label for="sueldo">Sueldo</label> <input type="text"
+										class="form-control" name="sueldo" required
+										value="${jugador.sueldo}">
 								</div>
 							</div>
 							<!-- comment -->

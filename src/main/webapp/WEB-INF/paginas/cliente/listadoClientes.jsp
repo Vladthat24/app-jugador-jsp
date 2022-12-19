@@ -4,7 +4,7 @@
 
 <section id="clientes">
 	<div class="container">
-
+		<div class="row">
 			<div class="col-md-9">
 				<div class="card">
 					<div class="card-header">
@@ -51,29 +51,30 @@
 
 
 			</div>
-          <!-- Totales -->
-          <div class="col-md-3">
-              <div class="card text-center bg-danger text-white mb-3">
-                  <div class="card-body">
-                      <h3>Saldo Total</h3>
-                      <h4 class="display-4">
-                          <fmt:formatNumber value="${saldoTotal}" type="currency" />
-                      </h4>
-                  </div>
-              </div>
-                  
-             <div class="card text-center bg-success text-white mb-3">
-                  <div class="card-body">
-                      <h3>Total Clientes</h3>
-                      <h4 class="display-4">
-                          <i class="fas fa-user"> </i>${totalClientes}
-                      </h4>
-                  </div>
-              </div>
-          </div>
+			<!-- Totales -->
+			<div class="col-md-3">
+				<div class="card text-center bg-danger text-white mb-3">
+					<div class="card-body">
+						<h3>Total de Sueldo de los Delanteros:</h3>
+						<h4 class="display-4">
+							<fmt:formatNumber value="${sueldoDelanteros}" type="currency" />
+						</h4>
+					</div>
+				</div>
+
+				<div class="card text-center bg-success text-white mb-3">
+					<div class="card-body">
+						<h3>Total de Jugadores en la posicion de Delanterio</h3>
+						<h4 class="display-4">
+							<i class="fas fa-user"></i> ${cantDelanterios}
+						</h4>
+					</div>
+				</div>
+			</div>
 
 
 		</div>
+	</div>
 	</div>
 
 

@@ -76,12 +76,12 @@ public class JugadorDao {
 	             String nombre=rs.getString("nombre_jugador");
 	             String apellido=rs.getString("ape_jugador");
 	             String email=rs.getString("dni_jugador");
-	             Double sueldo=rs.getString("sueldo");
+	             Double sueldo=rs.getDouble("sueldo");
 	             int cod_club=rs.getInt("cod_club");
 	             int cod_posicionr=rs.getInt("cod_posicion");
 	             System.out.println(nombre+" "+apellido+" "+email);
 	             
-	           clientes.add(new Cliente(idCliente,nombre,apellido,email,telefono,saldo));
+	             jugador.add(new Jugador(cod_jugador, nombre, email, cod_jugador, sueldo, cod_club, cod_posicionr));
 	         }
 	         
 	     } catch (Exception e) {
@@ -93,7 +93,7 @@ public class JugadorDao {
 	                 
 	     }
 	     
-	     return clientes;
+	     return jugador;
 	 }
 
 	public Jugador buscar(Jugador jugador) {
@@ -109,7 +109,7 @@ public class JugadorDao {
 			rs.next();
 			int cod_jugador = rs.getInt("cod_jugador");
 			String nombre_jugador = rs.getString("nombre_jugador");
-			String ape_jugador = rs.getString("ap_jugador");
+			String ape_jugador = rs.getString("ape_jugador");
 			int dni_jugador = rs.getInt("dni_jugador");
 			Double sueldo = rs.getDouble("sueldo");
 			int cod_club = rs.getInt("cod_club");

@@ -82,6 +82,7 @@ public class ServletControlador extends HttpServlet {
 			throws ServletException, IOException {
 
 		List<Object[]> jugador = null;
+		List<Jugador> jugadorSueldo = new JugadorDao().listarDao();
 		HttpSession sesion = request.getSession();
 		
 			jugador = new JugadorDao().listar();
@@ -98,7 +99,8 @@ public class ServletControlador extends HttpServlet {
 
 		sesion.setAttribute("club", club);
 		sesion.setAttribute("posicion", posicion);
-		sesion.setAttribute("posicion", this.calcularSueldoJugador(jugador));
+		sesion.setAttribute("sueldoDelanteros", this.calcularSueldoJugador(jugadorSueldo));
+		sesion.setAttribute("cantDelanterios", this.cantidadJugadoresDelanterios(jugadorSueldo));
 
 		response.sendRedirect("clientes.jsp");
 	}
@@ -113,6 +115,18 @@ public class ServletControlador extends HttpServlet {
         }
     
     return sueldoTotalDelantero;
+    }
+    
+    private int cantidadJugadoresDelanterios(List<Jugador> jugadores){
+    int cantidadJugadoresDelanteros=0;
+        for (Jugador jugador : jugadores) {
+        	if(jugador.getCod_posicion()==1) {
+        		
+        		cantidadJugadoresDelanteros+=1;
+        	}
+        }
+    
+    return cantidadJugadoresDelanteros;
     }
 
 	protected void editarJugador(HttpServletRequest request, HttpServletResponse response)
@@ -143,8 +157,8 @@ public class ServletControlador extends HttpServlet {
 		int cod_jugador = Integer.parseInt(request.getParameter("cod_jugador"));
 		int cod_club = Integer.parseInt(request.getParameter("cod_club"));
 		int cod_posicion = Integer.parseInt(request.getParameter("cod_posicion"));
-		String nombre_jugador = request.getParameter("nombre");
-		String ape_jugador = request.getParameter("descripcion");
+		String nombre_jugador = request.getParameter("nombre_jugador");
+		String ape_jugador = request.getParameter("ape_juegador");
 		int dni_jugador = Integer.parseInt(request.getParameter("dni_jugador"));
 		Double sueldo = Double.parseDouble(request.getParameter("sueldo"));
 		Jugador jugador = new Jugador(cod_jugador, nombre_jugador, ape_jugador, dni_jugador, sueldo, cod_club, cod_posicion);
